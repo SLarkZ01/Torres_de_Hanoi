@@ -3,11 +3,11 @@ AOS.init({
     once: true,
 });
 
-// Game Variables
+// Variables del juego
 let numberOfDisks = 3;
-let towers = [[], [], []]; // Representing the three towers
-let selectedDisk = null; // Stores the disk currently being moved
-let selectedTower = null; // Stores the tower from which a disk is picked
+let towers = [[], [], []]; // Representando las tres torres
+let selectedDisk = null; // Almacena el disco que se está moviendo actualmente
+let selectedTower = null; // Almacena la torre desde la que se recoge un disco
 let moveCount = 0;
 let timerInterval;
 let seconds = 0;
@@ -15,9 +15,9 @@ let isGameActive = false;
 let solutionSteps = [];
 let solutionIndex = 0;
 let solutionPlaybackInterval;
-let solutionSpeed = 500; // milliseconds
+let solutionSpeed = 500; // milisegundos
 
-// DOM Elements
+// Elementos del DOM
 const diskCountSelect = document.getElementById('diskCount');
 const newGameBtn = document.getElementById('newGameBtn');
 const solutionBtn = document.getElementById('solutionBtn');
@@ -44,7 +44,7 @@ const loseModal = new bootstrap.Modal(document.getElementById('loseModal'));
 const loseMinMovesSpan = document.getElementById('loseMinMoves');
 const newGameLoseBtn = document.getElementById('newGameLoseBtn');
 
-// Solution Controls
+// Controles de la solución
 const playSolutionBtn = document.getElementById('playSolutionBtn');
 const pauseSolutionBtn = document.getElementById('pauseSolutionBtn');
 const prevStepBtn = document.getElementById('prevStepBtn');
@@ -58,7 +58,7 @@ const showTreeBtn = document.getElementById('showTreeBtn');
 const treeText = document.getElementById('treeText');
 const treeModal = new bootstrap.Modal(document.getElementById('treeModal'));
 
-// Event Listeners
+// Escuchadores de eventos
 newGameBtn.addEventListener('click', startNewGame);
 diskCountSelect.addEventListener('change', () => {
     numberOfDisks = parseInt(diskCountSelect.value);
@@ -80,16 +80,16 @@ towerContainers.forEach((tower, index) => {
     tower.addEventListener('click', () => handleTowerClick(index));
 });
 
-// Solution playback listeners
+// Escuchadores para la reproducción de la solución
 playSolutionBtn.addEventListener('click', playSolution);
 pauseSolutionBtn.addEventListener('click', pauseSolution);
 prevStepBtn.addEventListener('click', () => goToSolutionStep(solutionIndex - 1));
 nextStepBtn.addEventListener('click', () => goToSolutionStep(solutionIndex + 1));
 stopSolutionBtn.addEventListener('click', stopSolution);
 solutionSpeedSlider.addEventListener('input', (e) => {
-    solutionSpeed = 2100 - parseInt(e.target.value); // Invert slider for intuitive speed control
+    solutionSpeed = 2100 - parseInt(e.target.value); // Invertir el slider para un control intuitivo de la velocidad
     solutionSpeedValueSpan.textContent = `${(solutionSpeed / 1000).toFixed(1)}s`;
-    if (solutionPlaybackInterval) { // If playing, restart with new speed
+    if (solutionPlaybackInterval) { // Si está reproduciendo, reiniciar con la nueva velocidad
         pauseSolution();
         playSolution();
     }
@@ -107,7 +107,7 @@ showTreeBtn.addEventListener('click', () => {
     treeModal.show();
 });
 
-// Game Logic Functions
+// Funciones de lógica del juego
 
 function startNewGame() {
     resetGame();
@@ -116,7 +116,7 @@ function startNewGame() {
     solutionSteps = [];
     solutionIndex = 0;
 
-    // Populate the first tower with disks
+    // Llenar la primera torre con los discos
     for (let i = numberOfDisks; i >= 1; i--) {
         towers[0].push(i);
     }
@@ -126,18 +126,18 @@ function startNewGame() {
     startTimer();
     gameStatusSpan.textContent = '';
     gameStatusSpan.classList.remove('win');
-    calculateHanoiSolution(numberOfDisks, 0, 2, 1); // Calculate solution for the new game
+    calculateHanoiSolution(numberOfDisks, 0, 2, 1); // Calcular la solución para el nuevo juego
 }
 
 function resetGame() {
     stopTimer();
-    pauseSolution(); // Stop solution playback if active
+    pauseSolution(); // Detener la reproducción de la solución si está activa
     moveCount = 0;
     selectedDisk = null;
     selectedTower = null;
     isGameActive = false;
-    towers = [[], [], []]; // Clear all towers
-    renderDisks(); // Clear the display
+    towers = [[], [], []]; // Limpiar todas las torres
+    renderDisks(); // Limpiar la visualización
     updateStats();
     timerSpan.textContent = '00:00';
     gameStatusSpan.textContent = '';
@@ -145,7 +145,7 @@ function resetGame() {
     minMovesSpan.textContent = (Math.pow(2, numberOfDisks) - 1).toString();
     solutionSteps = [];
     solutionIndex = 0;
-    // Re-populate the first tower for user play, if not in solution mode
+    // Volver a llenar la primera torre para el usuario, si no está en modo solución
     for (let i = numberOfDisks; i >= 1; i--) {
         towers[0].push(i);
     }
@@ -155,13 +155,13 @@ function resetGame() {
 function renderDisks() {
     towerContainers.forEach((towerContainer, towerIndex) => {
         const disksContainer = towerContainer.querySelector('.disks-container');
-        disksContainer.innerHTML = ''; // Clear existing disks
+        disksContainer.innerHTML = ''; // Limpiar los discos existentes
 
         towers[towerIndex].forEach(diskSize => {
             const disk = document.createElement('div');
             disk.classList.add('disk', `disk-${diskSize}`);
             disk.dataset.size = diskSize;
-            disk.textContent = diskSize; // Optional: display disk size
+            disk.textContent = diskSize; // Opcional: mostrar el tamaño del disco
             disksContainer.appendChild(disk);
         });
     });
@@ -173,29 +173,29 @@ function handleTowerClick(towerIndex) {
     const targetTower = towers[towerIndex];
 
     if (selectedDisk === null) {
-        // No disk selected yet, try to pick one
+        // No hay disco seleccionado aún, intentar tomar uno
         if (targetTower.length > 0) {
-            selectedDisk = targetTower[targetTower.length - 1]; // Get the top disk
+            selectedDisk = targetTower[targetTower.length - 1]; // Tomar el disco superior
             selectedTower = towerIndex;
             towerContainers[selectedTower].classList.add('selected');
         }
     } else {
-        // A disk is already selected, try to place it
+        // Ya hay un disco seleccionado, intentar colocarlo
         if (towerIndex === selectedTower) {
-            // Clicking the same tower deselects the disk
+            // Hacer clic en la misma torre deselecciona el disco
             selectedDisk = null;
             selectedTower = null;
             towerContainers.forEach(t => t.classList.remove('selected'));
         } else if (targetTower.length === 0 || selectedDisk < targetTower[targetTower.length - 1]) {
-            // Valid move: target tower is empty or top disk is larger
+            // Movimiento válido: la torre destino está vacía o el disco superior es mayor
             moveDisk(selectedTower, towerIndex);
             selectedDisk = null;
             selectedTower = null;
             towerContainers.forEach(t => t.classList.remove('selected'));
         } else {
-            // Invalid move: show feedback without alert
+            // Movimiento inválido: mostrar retroalimentación sin alerta
             showInvalidMoveFeedback();
-            selectedDisk = null; // Deselect to allow a new attempt
+            selectedDisk = null; // Deseleccionar para permitir un nuevo intento
             selectedTower = null;
             towerContainers.forEach(t => t.classList.remove('selected'));
         }
@@ -203,12 +203,12 @@ function handleTowerClick(towerIndex) {
 }
 
 function moveDisk(sourceTowerIndex, destTowerIndex, isSolutionMove = false) {
-    if (towers[sourceTowerIndex].length === 0) return; // Should not happen with validation
+    if (towers[sourceTowerIndex].length === 0) return; // No debería ocurrir con la validación
 
     const diskToMove = towers[sourceTowerIndex].pop();
     towers[destTowerIndex].push(diskToMove);
 
-    if (!isSolutionMove) { // Only increment moveCount for user-driven moves
+    if (!isSolutionMove) { // Solo incrementar moveCount para movimientos del usuario
         moveCount++;
         updateStats();
     }
@@ -243,7 +243,7 @@ function updateStats() {
 
 function startTimer() {
     seconds = 0;
-    stopTimer(); // Clear any existing timer
+    stopTimer(); // Limpiar cualquier temporizador existente
     timerInterval = setInterval(() => {
         seconds++;
         const minutes = Math.floor(seconds / 60);
@@ -257,7 +257,7 @@ function stopTimer() {
 }
 
 function checkWinCondition() {
-    // Win condition: all disks are on the last tower (tower 2)
+    // Condición de victoria: todos los discos están en la última torre (torre 2)
     return towers[2].length === numberOfDisks;
 }
 
@@ -357,20 +357,20 @@ function getHanoiTreeStats(n) {
 
 function showSolution() {
     if (solutionSteps.length === 0) {
-        // If solution not calculated for current disk count, calculate it.
-        // This might happen if the user clicks "Show Solution" immediately after changing disk count.
+        // Si la solución no está calculada para el número actual de discos, calcularla.
+        // Esto puede ocurrir si el usuario hace clic en "Mostrar Solución" inmediatamente después de cambiar el número de discos.
         calculateHanoiSolution(numberOfDisks, 0, 2, 1);
     }
 
-    // Reset game state to initial for solution playback
+    // Reiniciar el estado del juego para la reproducción de la solución
     towers = [[], [], []];
     for (let i = numberOfDisks; i >= 1; i--) {
         towers[0].push(i);
     }
-    renderDisks(); // Initial state for solution
+    renderDisks(); // Estado inicial para la solución
 
-    isGameActive = false; // Disable user interaction during solution playback
-    stopTimer(); // Stop the user game timer
+    isGameActive = false; // Deshabilitar la interacción del usuario durante la reproducción de la solución
+    stopTimer(); // Detener el temporizador del usuario
 
     solutionIndex = 0;
     populateSolutionStepsList();
@@ -401,7 +401,7 @@ function highlightCurrentSolutionStep() {
 }
 
 function playSolution() {
-    if (solutionPlaybackInterval) return; // Already playing
+    if (solutionPlaybackInterval) return; // Ya está reproduciendo
 
     solutionPlaybackInterval = setInterval(() => {
         if (solutionIndex < solutionSteps.length) {
@@ -409,7 +409,7 @@ function playSolution() {
             solutionIndex++;
             highlightCurrentSolutionStep();
         } else {
-            pauseSolution(); // End of solution
+            pauseSolution(); // Fin de la solución
             gameStatusSpan.textContent = '¡Solución Completa!';
             gameStatusSpan.classList.add('win');
         }
@@ -423,7 +423,7 @@ function pauseSolution() {
 
 function stopSolution() {
     pauseSolution();
-    // Reset to initial state for solution display
+    // Reiniciar al estado inicial para mostrar la solución
     towers = [[], [], []];
     for (let i = numberOfDisks; i >= 1; i--) {
         towers[0].push(i);
@@ -437,24 +437,24 @@ function stopSolution() {
 
 function goToSolutionStep(index) {
     if (index >= 0 && index <= solutionSteps.length) {
-        pauseSolution(); // Pause if playing
+        pauseSolution(); // Pausar si está reproduciendo
         solutionIndex = index;
 
-        // Re-initialize towers to display the state up to this step
+        // Reinicializar las torres para mostrar el estado hasta este paso
         towers = [[], [], []];
         for (let i = numberOfDisks; i >= 1; i--) {
             towers[0].push(i);
         }
-        renderDisks(); // Reset to initial state
+        renderDisks(); // Reiniciar al estado inicial
 
-        // Apply all steps up to the current index
+        // Aplicar todos los pasos hasta el índice actual
         for (let i = 0; i < solutionIndex; i++) {
             const step = solutionSteps[i];
-            // Temporarily remove disk to move it from source and add to destination
+            // Quitar temporalmente el disco para moverlo de origen a destino
             const diskToMove = towers[step.from].pop();
             towers[step.to].push(diskToMove);
         }
-        renderDisks(); // Update the visual state
+        renderDisks(); // Actualizar el estado visual
 
         highlightCurrentSolutionStep();
     }
@@ -463,11 +463,11 @@ function goToSolutionStep(index) {
 function executeSolutionStep(index) {
     const step = solutionSteps[index];
     if (step) {
-        moveDisk(step.from, step.to, true); // true indicates a solution move
+        moveDisk(step.from, step.to, true); // true indica un movimiento de la solución
     }
 }
 
-// Feedback visual para movimiento inválido
+// Retroalimentación visual para movimiento inválido
 function showInvalidMoveFeedback() {
     gameStatusSpan.textContent = '¡Movimiento inválido!';
     gameStatusSpan.classList.add('text-danger');
@@ -499,9 +499,9 @@ function renderTreeText(node, prefix = '', isLeft = true) {
     return str;
 }
 
-// Initialize game on load
+// Inicializar el juego al cargar
 startNewGame();
-solutionSpeedValueSpan.textContent = `${(solutionSpeed / 1000).toFixed(1)}s`; // Initial speed display
+solutionSpeedValueSpan.textContent = `${(solutionSpeed / 1000).toFixed(1)}s`; // Visualización inicial de la velocidad
 
 // Reproducir la música de fondo y reiniciar si termina (por compatibilidad extra)
 const bgMusic = document.getElementById('bgMusic');
