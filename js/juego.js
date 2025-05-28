@@ -310,6 +310,13 @@ function triggerConfetti() {
 }
 
 // Nodo para el árbol binario de movimientos de Hanoi
+// Esta clase representa cada nodo del árbol binario utilizado para modelar la solución recursiva de las Torres de Hanoi.
+// Cada nodo almacena:
+// - 'disk': el número de disco que se mueve en ese paso.
+// - 'from': la torre de origen.
+// - 'to': la torre de destino.
+// - 'left': referencia al subproblema izquierdo (mover n-1 discos al auxiliar).
+// - 'right': referencia al subproblema derecho (mover n-1 discos al destino).
 class HanoiNode {
     constructor(disk, from, to) {
         this.disk = disk;
@@ -321,8 +328,15 @@ class HanoiNode {
 }
 
 // Construye el árbol binario de movimientos
+// Esta función genera recursivamente el árbol binario que representa la solución de las Torres de Hanoi.
+// Cada nodo del árbol representa el movimiento de un disco específico desde una torre origen a una torre destino.
+// - Si n == 1 (caso base), crea un nodo para mover el disco 1 directamente de la torre origen a la torre destino.
+// - Si n > 1, crea un nodo para mover el disco n y:
+//   - El subárbol izquierdo representa mover los n-1 discos superiores de la torre origen a la torre auxiliar.
+//   - El subárbol derecho representa mover esos n-1 discos de la torre auxiliar a la torre destino.
+// Así, el árbol refleja la estructura recursiva del algoritmo de Hanoi.
 function buildHanoiTree(n, source, destination, auxiliary) {
-    if (n === 1) {
+    if (n === 1) { 
         return new HanoiNode(1, source, destination);
     }
     const node = new HanoiNode(n, source, destination);
@@ -332,6 +346,9 @@ function buildHanoiTree(n, source, destination, auxiliary) {
 }
 
 // Recorre el árbol en inorden para obtener los pasos
+// Esta función recorre el árbol binario generado por buildHanoiTree en orden inorden (izquierda, raíz, derecha).
+// El recorrido inorden permite obtener la secuencia correcta de movimientos para resolver las Torres de Hanoi.
+// Cada vez que visita un nodo, agrega el movimiento correspondiente al arreglo 'steps'.
 function traverseHanoiTree(node, steps = []) {
     if (!node) return steps;
     traverseHanoiTree(node.left, steps);
@@ -341,6 +358,8 @@ function traverseHanoiTree(node, steps = []) {
 }
 
 // Nueva función para calcular la solución usando árbol binario
+// Esta función utiliza buildHanoiTree para construir el árbol de movimientos y luego traverseHanoiTree para obtener la lista ordenada de pasos.
+// El resultado se almacena en solutionSteps, que se usa para mostrar la solución paso a paso en la interfaz.
 function calculateHanoiSolution(n, source, destination, auxiliary) {
     solutionSteps = [];
     const root = buildHanoiTree(n, source, destination, auxiliary);
@@ -348,6 +367,10 @@ function calculateHanoiSolution(n, source, destination, auxiliary) {
 }
 
 // Calcula el número de nodos y la altura del árbol de Hanoi
+// Esta función devuelve dos datos importantes sobre el árbol binario de la solución:
+// - 'nodos': representa el número total de movimientos necesarios para resolver las Torres de Hanoi con n discos, que es 2^n - 1.
+// - 'altura': corresponde a la altura del árbol, que es igual al número de discos n (ya que cada nivel del árbol representa mover un disco).
+// Estos valores permiten analizar la complejidad y el crecimiento exponencial del problema.
 function getHanoiTreeStats(n) {
     return {
         nodos: Math.pow(2, n) - 1,
