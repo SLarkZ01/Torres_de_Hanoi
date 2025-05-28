@@ -780,6 +780,7 @@
 </head>
 
 <body>
+    <audio id="bgMusic" src="cancion.mp3" autoplay loop></audio>
     <div class="container my-5">
         <header class="text-center mb-5">
             <h1 class="display-4 animate__animated animate__fadeInDown mb-2">Torres de Hanoi</h1>
@@ -1478,6 +1479,25 @@
         // Initialize game on load
         startNewGame();
         solutionSpeedValueSpan.textContent = `${(solutionSpeed / 1000).toFixed(1)}s`; // Initial speed display
+
+        // Reproducir la música de fondo y reiniciar si termina (por compatibilidad extra)
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.5;
+        // Forzar reproducción tras interacción si autoplay falla
+        function tryPlayMusic() {
+            bgMusic.play().catch(() => {});
+        }
+        document.addEventListener('DOMContentLoaded', tryPlayMusic);
+        document.addEventListener('click', tryPlayMusic, { once: true });
+        document.addEventListener('keydown', tryPlayMusic, { once: true });
+        bgMusic.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        });
+        // Intentar reproducir automáticamente (algunos navegadores requieren interacción)
+        window.addEventListener('DOMContentLoaded', () => {
+            bgMusic.play().catch(() => {});
+        });
     </script>
 </body>
 
