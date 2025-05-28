@@ -40,6 +40,9 @@ const finalMinMovesSpan = document.getElementById('finalMinMoves');
 const newGameModalBtn = document.getElementById('newGameModalBtn');
 const solutionStepsList = document.getElementById('solutionSteps');
 const moveProgressBar = document.getElementById('moveProgress');
+const loseModal = new bootstrap.Modal(document.getElementById('loseModal'));
+const loseMinMovesSpan = document.getElementById('loseMinMoves');
+const newGameLoseBtn = document.getElementById('newGameLoseBtn');
 
 // Solution Controls
 const playSolutionBtn = document.getElementById('playSolutionBtn');
@@ -66,6 +69,10 @@ solutionBtn.addEventListener('click', showSolution);
 resetBtn.addEventListener('click', resetGame);
 newGameModalBtn.addEventListener('click', () => {
     winModal.hide();
+    startNewGame();
+});
+newGameLoseBtn.addEventListener('click', () => {
+    loseModal.hide();
     startNewGame();
 });
 
@@ -224,6 +231,14 @@ function updateStats() {
     setTimeout(() => {
         moveProgressBar.classList.remove('animate__animated', 'animate__fadeIn');
     }, 500);
+
+    // Mostrar modal de derrota si se alcanzan los movimientos mínimos y no se ha ganado
+    if (moveCount >= minMoves && !checkWinCondition() && isGameActive) {
+        isGameActive = false;
+        stopTimer();
+        loseMinMovesSpan.textContent = minMoves;
+        loseModal.show();
+    }
 }
 
 function startTimer() {

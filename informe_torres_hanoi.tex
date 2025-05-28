@@ -1,0 +1,187 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fullpage}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[scaled=1]{helvet}
+\usepackage[helvet]{sfmath}
+\usepackage[spanish, es-tabla]{babel}
+\everymath={\sf}
+\usepackage{parskip}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=BlueViolet]{hyperref}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\titleformat{\section}
+  {\Large\bfseries\color{BlueViolet}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{BlueViolet}}{\thesubsection}{1em}{}
+
+\setlength{\headheight}{45pt}
+\setlength{\headsep}{20pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=40pt]{Images/Logo Uniautonoma.png}}
+\chead{\textsf{Universidad Autónoma del Cauca}}
+\rhead{\textsf{Torres de Hanói}}
+\rfoot{\textsf{\thepage}}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\includegraphics[width=0.4\textwidth]{Images/Logo Uniautonoma.png}\par
+\vspace{1cm}
+{\bfseries\LARGE Universidad Autónoma del Cauca\par}
+\vspace{0.5cm}
+{\scshape\Large Taller de Desarrollo de Aplicaciones Web\par}
+\vspace{0.5cm}
+{\scshape\Huge Torres de Hanói Interactiva\par}
+\vspace{1cm}
+{\itshape\LARGE HTML, JavaScript y Árbol Binario\par}
+\vspace{1.5cm}
+{\Large \textbf{Autores:} \\ Daniel Rivas Agredo \\ Thomas Montoya Magon \par}
+\vspace{0.5cm}
+{\Large \textbf{Docente:} \\ Diego Fernando Prado Osorio\par}
+\vfill
+{\Large \today \par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Introducción}
+La Torre de Hanói es un clásico juego de lógica que consiste en trasladar una serie de discos de una torre a otra, siguiendo ciertas reglas. Aunque su apariencia es sencilla, su resolución implica el uso de un algoritmo recursivo que puede representarse como un árbol binario.
+
+\section{Objetivos}
+\begin{itemize}
+    \item Implementar el juego de la Torre de Hanói con una interfaz gráfica web interactiva.
+    \item Representar la solución del juego mediante un árbol binario.
+    \item Analizar la complejidad computacional del algoritmo.
+    \item Brindar al usuario una experiencia lúdica y educativa.
+\end{itemize}
+
+\section{Descripción General del Juego}
+El juego permite al usuario seleccionar el número de discos (de 3 a 8), realizar movimientos manuales, ver una solución automática paso a paso, y observar el árbol binario generado por el algoritmo recursivo. También se muestran estadísticas como el tiempo transcurrido, número de movimientos y el mínimo teórico posible.
+
+\section{Implementación Técnica}
+
+\subsection{Tecnologías Utilizadas}
+\begin{itemize}
+    \item \textbf{HTML/CSS/JS}: Para el diseño visual e interactividad.
+    \item \textbf{Bootstrap y AOS}: Para animaciones y estilos responsivos.
+    \item \textbf{JavaScript}: Lógica del juego, validación de reglas y árbol recursivo.
+\end{itemize}
+
+\subsection{Estructura del Proyecto}
+El proyecto está organizado con la siguiente estructura de archivos y directorios:
+
+\textbf{Torres\_Hanoi/}
+\begin{itemize}
+    \item \textbf{Archivos principales}:
+    \begin{itemize}
+        \item \texttt{index.html}: Página principal con el menú de inicio del juego
+        \item \texttt{juego.html}: Interfaz principal del juego de Torres de Hanói
+        \item \texttt{informe\_torres\_hanoi.tex}: Documentación técnica del proyecto en LaTeX
+    \end{itemize}
+    
+    \item \textbf{css/}: Directorio de hojas de estilo
+    \begin{itemize}
+        \item \texttt{menu.css}: Estilos CSS para la página del menú principal
+        \item \texttt{juego.css}: Estilos CSS específicos para la interfaz del juego
+    \end{itemize}
+    
+    \item \textbf{js/}: Directorio con la lógica JavaScript
+    \begin{itemize}
+        \item \texttt{menu.js}: Funcionalidades interactivas del menú principal
+        \item \texttt{juego.js}: Lógica completa del juego, algoritmo recursivo, validaciones y generación del árbol binario
+    \end{itemize}
+    
+    \item \textbf{images/}: Directorio de recursos gráficos
+    \begin{itemize}
+        \item \texttt{fondo.png}: Imagen de fondo para mejorar la estética de la interfaz
+    \end{itemize}
+    
+    \item \textbf{music/}: Directorio de recursos de audio
+    \begin{itemize}
+        \item \texttt{cancionmenu.mp3}: Música de fondo para el menú principal
+        \item \texttt{cancion.mp3}: Música ambiente durante el desarrollo del juego
+    \end{itemize}
+    
+    \item \textbf{.git/}: Directorio de control de versiones Git con historial completo del proyecto
+\end{itemize}
+
+\subsection{Arquitectura del Código}
+\begin{itemize}
+    \item \textbf{HTML}: Define la interfaz del juego, controles, estadísticas e instrucciones.
+    \item \textbf{CSS}: Proporciona diseño visual, animaciones y responsividad.
+    \item \textbf{JavaScript}: Gestiona la lógica del juego (movimientos, validaciones, solución automática) y genera el árbol binario de resolución.
+\end{itemize}
+
+\subsection{Árbol Binario Recursivo}
+La solución se basa en una estructura de árbol recursivo, donde cada nodo representa una sub-tarea en el proceso de resolución. Para resolver el problema con $n$ discos, el algoritmo se divide en tres pasos principales:
+\begin{enumerate}
+    \item Mover $n-1$ discos de la torre origen a la torre auxiliar
+    \item Mover el disco más grande de la torre origen a la torre destino
+    \item Mover $n-1$ discos de la torre auxiliar a la torre destino
+\end{enumerate}
+
+Para el caso específico de 3 discos, el árbol de llamadas recursivas se estructura de la siguiente manera:
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  [level distance=2.2cm,
+   level 1/.style={sibling distance=7cm},
+   level 2/.style={sibling distance=3.5cm},
+   level 3/.style={sibling distance=1.8cm},
+   every node/.style={text centered, font=\tiny, rectangle, draw, minimum width=2.5cm, minimum height=0.8cm}]
+  \node {Hanoi(3, A→C, B)}
+    child {node {Hanoi(2, A→B, C)}
+      child {node {Hanoi(1, A→C, B)}}
+      child {node {Hanoi(1, C→B, A)}}}
+    child {node {Hanoi(2, B→C, A)}
+      child {node {Hanoi(1, B→A, C)}}
+      child {node {Hanoi(1, A→C, B)}}};
+\end{tikzpicture}
+\caption{Árbol de recursión para Torres de Hanói con 3 discos. Cada nodo representa una llamada recursiva Hanoi(n, origen→destino, auxiliar).}
+\end{figure}
+
+Cada nodo del árbol representa una llamada a la función recursiva \texttt{Hanoi(n, origen→destino, auxiliar)}, donde:
+\begin{itemize}
+    \item \textbf{n}: Número de discos a mover
+    \item \textbf{origen→destino}: Movimiento de torre origen a torre destino
+    \item \textbf{auxiliar}: Torre auxiliar utilizada en el proceso
+\end{itemize}
+
+La recursividad termina cuando $n=1$, momento en el cual se realiza un movimiento directo del disco. El árbol completo para 3 discos genera exactamente $2^3 - 1 = 7$ movimientos.
+
+\section{Análisis de Complejidad}
+El algoritmo de resolución tiene una complejidad de $O(2^n)$, donde $n$ es el número de discos. Esto se debe a que cada disco genera dos subproblemas recursivos de tamaño $n-1$.
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Discos (n)} & \textbf{Movimientos mínimos} & \textbf{Altura del árbol} \\
+        \hline
+        3 & 7  & 3 \\
+        4 & 15 & 4 \\
+        5 & 31 & 5 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Reflexión sobre el uso de estructuras de datos}
+La representación del problema como un árbol binario no solo permite visualizar la recursión de manera clara, sino que también ayuda a comprender la lógica de división del problema en subproblemas más pequeños. Este enfoque demuestra cómo las estructuras de datos pueden facilitar el diseño y análisis de algoritmos complejos, y refuerza la importancia de elegir estructuras adecuadas según el contexto. También se identifican límites en la escalabilidad, ya que para valores grandes de $n$, la profundidad del árbol y la cantidad de nodos se vuelve impráctica de manejar sin técnicas adicionales.
+
+\section{Conclusión}
+Este proyecto permitió aplicar conceptos fundamentales de programación web junto con estructuras de datos como árboles binarios. La visualización del árbol de llamadas y la solución paso a paso son elementos clave que enriquecen la experiencia del usuario y refuerzan el aprendizaje algorítmico. Además, este trabajo evidencia la utilidad de los árboles binarios en la representación de procesos recursivos y en el análisis de su complejidad.
+
+\end{document}
