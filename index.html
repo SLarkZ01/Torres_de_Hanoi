@@ -201,53 +201,78 @@
         }
         
         @media (max-width: 768px) {
+            .welcome-container {
+                max-width: 98vw;
+                padding: 1.2rem 0.5rem;
+                border-radius: 12px;
+            }
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
+                padding: 0.5rem 0.2rem;
             }
-            
             .subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
-            
             .play-btn {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
             }
-            
             .tower-decoration {
-                width: 250px;
-                height: 150px;
+                width: 170px;
+                height: 90px;
             }
-            
             .tower-pole {
-                height: 100px;
+                height: 55px;
+                width: 8px;
+            }
+            .tower-base {
+                height: 12px;
+            }
+            .disk-1 { width: 55px; height: 13px; }
+            .disk-2 { width: 35px; height: 13px; }
+            .disk-3 { width: 18px; height: 13px; }
+            .authors {
+                font-size: 0.85rem;
+                margin-top: 1.2rem;
             }
         }
-        
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
+            .welcome-container {
+                max-width: 100vw;
+                padding: 0.7rem 0.1rem;
+                border-radius: 0;
+                min-height: 100vh;
+                box-shadow: none;
+            }
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.05rem;
+                padding: 0.3rem 0.1rem;
             }
-            
+            .subtitle {
+                font-size: 0.8rem;
+            }
+            .play-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 0.7rem;
+                border-radius: 30px;
+            }
             .tower-decoration {
-                width: 200px;
-                height: 120px;
+                width: 110px;
+                height: 60px;
             }
-            
             .tower-pole {
-                height: 80px;
+                height: 32px;
+                width: 6px;
             }
-            
-            .disk-1 {
-                width: 80px;
+            .tower-base {
+                height: 8px;
             }
-            
-            .disk-2 {
-                width: 55px;
-            }
-            
-            .disk-3 {
-                width: 30px;
+            .disk-1 { width: 30px; height: 8px; }
+            .disk-2 { width: 18px; height: 8px; }
+            .disk-3 { width: 10px; height: 8px; }
+            .authors {
+                font-size: 0.7rem;
+                margin-top: 0.7rem;
             }
         }
     </style>
