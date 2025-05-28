@@ -1096,7 +1096,12 @@
         // Evento para mostrar el árbol
         showTreeBtn.addEventListener('click', () => {
             const root = buildHanoiTree(numberOfDisks, 0, 2, 1);
-            treeText.textContent = renderTreeText(root);
+            const stats = getHanoiTreeStats(numberOfDisks);
+            let resumen = `Resumen del árbol binario de recursión para n = ${numberOfDisks} discos:\n`;
+            resumen += `- Número de nodos (movimientos): 2^${numberOfDisks} - 1 = ${stats.nodos}\n`;
+            resumen += `- Altura del árbol: ${stats.altura}\n`;
+            resumen += `- Complejidad: O(2^n)\n\n`;
+            treeText.textContent = resumen + renderTreeText(root);
             treeModal.show();
         });
 
@@ -1330,6 +1335,14 @@
             solutionSteps = [];
             const root = buildHanoiTree(n, source, destination, auxiliary);
             solutionSteps = traverseHanoiTree(root, []);
+        }
+
+        // Calcula el número de nodos y la altura del árbol de Hanoi
+        function getHanoiTreeStats(n) {
+            return {
+                nodos: Math.pow(2, n) - 1,
+                altura: n
+            };
         }
 
         function showSolution() {
