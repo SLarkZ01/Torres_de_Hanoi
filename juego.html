@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
     <style>
         :root {
@@ -45,7 +48,12 @@
             z-index: -1;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
         }
@@ -156,7 +164,8 @@
             color: white;
         }
 
-        .form-select, .form-control {
+        .form-select,
+        .form-control {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
@@ -164,7 +173,8 @@
             padding: 0.7rem 1rem;
         }
 
-        .form-select:focus, .form-control:focus {
+        .form-select:focus,
+        .form-control:focus {
             background-color: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
             box-shadow: 0 0 0 0.25rem rgba(140, 30, 255, 0.25);
@@ -200,7 +210,8 @@
             position: absolute;
             bottom: 20px;
             width: 12px;
-            height: 170px;
+            height: 220px;
+            /* altura aumentada */
             background: linear-gradient(to bottom, #d4af37, #f5d76e, #d4af37);
             border-radius: 6px;
             z-index: 1;
@@ -253,25 +264,72 @@
         }
 
         @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(140, 30, 255, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(140, 30, 255, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(140, 30, 255, 0.5); }
+            0% {
+                box-shadow: 0 0 5px rgba(140, 30, 255, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(140, 30, 255, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(140, 30, 255, 0.5);
+            }
         }
 
         @keyframes pulsate {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
-        .disk-1 { background: linear-gradient(90deg, #ff5757, #ff8c8c); width: 20%; }
-        .disk-2 { background: linear-gradient(90deg, #ff914d, #ffbd59); width: 30%; }
-        .disk-3 { background: linear-gradient(90deg, #ffde59, #fff7ae); width: 40%; }
-        .disk-4 { background: linear-gradient(90deg, #59ff59, #a9ffa9); width: 50%; }
-        .disk-5 { background: linear-gradient(90deg, #5981ff, #a9c5ff); width: 60%; }
-        .disk-6 { background: linear-gradient(90deg, #a459ff, #d5a9ff); width: 70%; }
-        .disk-7 { background: linear-gradient(90deg, #ff59b7, #ffa9e5); width: 80%; }
-        .disk-8 { background: linear-gradient(90deg, #8c8c8c, #d1d1d1); width: 90%; }
+        .disk-1 {
+            background: linear-gradient(90deg, #ff5757, #ff8c8c);
+            width: 20%;
+        }
+
+        .disk-2 {
+            background: linear-gradient(90deg, #ff914d, #ffbd59);
+            width: 30%;
+        }
+
+        .disk-3 {
+            background: linear-gradient(90deg, #ffde59, #fff7ae);
+            width: 40%;
+        }
+
+        .disk-4 {
+            background: linear-gradient(90deg, #59ff59, #a9ffa9);
+            width: 50%;
+        }
+
+        .disk-5 {
+            background: linear-gradient(90deg, #5981ff, #a9c5ff);
+            width: 60%;
+        }
+
+        .disk-6 {
+            background: linear-gradient(90deg, #a459ff, #d5a9ff);
+            width: 70%;
+        }
+
+        .disk-7 {
+            background: linear-gradient(90deg, #ff59b7, #ffa9e5);
+            width: 80%;
+        }
+
+        .disk-8 {
+            background: linear-gradient(90deg, #8c8c8c, #d1d1d1);
+            width: 90%;
+        }
 
         .disk.active {
             animation: pulsate 1s infinite;
@@ -288,7 +346,9 @@
             color: var(--success);
         }
 
-        #timer, #moveCount, #minMoves {
+        #timer,
+        #moveCount,
+        #minMoves {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 1.1rem;
@@ -321,9 +381,17 @@
         }
 
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Stat Icons */
@@ -485,14 +553,102 @@
             cursor: pointer;
         }
 
+        /* Mantener el modal compacto y hacer scroll solo en la lista de pasos */
+        #solutionModal .modal-dialog {
+            max-width: 600px;
+        }
+
+        #solutionModal .modal-content {
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #solutionModal .modal-body {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #solutionSteps {
+            max-height: 320px;
+            overflow-y: auto;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            #solutionModal .modal-dialog {
+                max-width: 95vw;
+            }
+
+            #solutionSteps {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #solutionSteps {
+                max-height: 140px;
+            }
+        }
+
+        /* Modal árbol de recursión compacto y con scroll interno en el área del árbol */
+        #treeModal .modal-dialog {
+            max-width: 600px;
+        }
+
+        #treeModal .modal-content {
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #treeModal .modal-body {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #treeText {
+            max-height: 320px;
+            overflow-y: auto;
+            margin-bottom: 0;
+            font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+            font-size: 1rem;
+            color: #00fecf;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        @media (max-width: 768px) {
+            #treeModal .modal-dialog {
+                max-width: 95vw;
+            }
+
+            #treeText {
+                max-height: 200px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #treeText {
+                max-height: 140px;
+                font-size: 0.8rem;
+            }
+        }
+
         /* Media queries */
         @media (max-width: 768px) {
             .tower-container {
-                height: 200px;
+                height: 220px;
             }
 
             .tower {
-                height: 140px;
+                height: 180px;
             }
 
             .display-4 {
@@ -507,24 +663,128 @@
 
         @media (max-width: 576px) {
             .tower-container {
-                height: 180px;
+                height: 200px;
             }
 
             .tower {
-                height: 120px;
+                height: 160px;
             }
 
             .display-4 {
                 font-size: 2rem;
             }
         }
+
+        /* Responsive modals for solution and tree (mobile improvements) */
+        @media (max-width: 768px) {
+
+            #solutionModal .modal-dialog,
+            #treeModal .modal-dialog {
+                max-width: 98vw;
+                margin: 0.5rem auto;
+            }
+
+            #solutionModal .modal-content,
+            #treeModal .modal-content {
+                max-height: 90vh;
+            }
+
+            #solutionModal .modal-body,
+            #treeModal .modal-body {
+                padding: 0.8rem 0.5rem;
+            }
+
+            #solutionSteps,
+            #treeText {
+                max-height: 40vh;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            #solutionModal .modal-dialog,
+            #treeModal .modal-dialog {
+                max-width: 100vw;
+                margin: 0;
+            }
+
+            #solutionModal .modal-content,
+            #treeModal .modal-content {
+                border-radius: 0;
+                max-height: 98vh;
+            }
+
+            #solutionModal .modal-header,
+            #treeModal .modal-header,
+            #solutionModal .modal-footer,
+            #treeModal .modal-footer {
+                padding-left: 0.7rem;
+                padding-right: 0.7rem;
+            }
+
+            #solutionModal .modal-body,
+            #treeModal .modal-body {
+                padding: 0.5rem 0.2rem;
+            }
+
+            #solutionSteps,
+            #treeText {
+                max-height: 32vh;
+                font-size: 0.85rem;
+                padding: 8px;
+            }
+        }
+
+        /* Botones de control de solución y pie de modal a ancho completo */
+        @media (max-width: 576px) {
+
+            .solution-controls .btn,
+            #solutionModal .modal-footer .btn,
+            #treeModal .modal-footer .btn {
+                width: 100%;
+                margin-bottom: 8px;
+                font-size: 1.05rem;
+                padding: 0.7rem 0;
+            }
+
+            .solution-controls {
+                flex-direction: column;
+                gap: 8px;
+                margin: 10px 0 15px 0;
+            }
+
+            #solutionModal .modal-footer,
+            #treeModal .modal-footer {
+                flex-direction: column;
+                gap: 8px;
+                padding-bottom: 0.5rem;
+            }
+
+            #solutionModal .modal-title,
+            #treeModal .modal-title {
+                font-size: 1.15rem;
+            }
+
+            #solutionModal .modal-body,
+            #treeModal .modal-body {
+                font-size: 1rem;
+            }
+
+            #solutionSteps .list-group-item {
+                font-size: 0.95rem;
+                padding: 0.5rem 0.7rem;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container my-5">
         <header class="text-center mb-5">
             <h1 class="display-4 animate__animated animate__fadeInDown mb-2">Torres de Hanoi</h1>
-            <p class="lead animate__animated animate__fadeIn animate__delay-1s">El legendario rompecabezas en una experiencia inmersiva</p>
+            <p class="lead animate__animated animate__fadeIn animate__delay-1s">El legendario rompecabezas en una
+                experiencia inmersiva</p>
         </header>
 
         <div class="row mb-4">
@@ -535,7 +795,8 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <label for="diskCount" class="form-label"><i class="fas fa-layer-group me-2"></i>Número de discos:</label>
+                            <label for="diskCount" class="form-label"><i class="fas fa-layer-group me-2"></i>Número de
+                                discos:</label>
                             <select id="diskCount" class="form-select">
                                 <option value="3">3 - Principiante</option>
                                 <option value="4">4 - Fácil</option>
@@ -546,9 +807,12 @@
                             </select>
                         </div>
                         <div class="d-grid gap-2">
-                            <button id="newGameBtn" class="btn btn-primary"><i class="fas fa-play me-2"></i>Nuevo Juego</button>
-                            <button id="solutionBtn" class="btn btn-info"><i class="fas fa-magic me-2"></i>Mostrar Solución</button>
-                            <button id="resetBtn" class="btn btn-danger"><i class="fas fa-redo-alt me-2"></i>Reiniciar</button>
+                            <button id="newGameBtn" class="btn btn-primary"><i class="fas fa-play me-2"></i>Nuevo
+                                Juego</button>
+                            <button id="solutionBtn" class="btn btn-info"><i class="fas fa-magic me-2"></i>Mostrar
+                                Solución</button>
+                            <button id="resetBtn" class="btn btn-danger"><i
+                                    class="fas fa-redo-alt me-2"></i>Reiniciar</button>
                         </div>
                     </div>
                 </div>
@@ -561,14 +825,17 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <p><i class="fas fa-shoe-prints stat-icon"></i><strong>Movimientos:</strong> <span id="moveCount">0</span></p>
-                                <p><i class="fas fa-bullseye stat-icon"></i><strong>Mínimo:</strong> <span id="minMoves">7</span></p>
+                                <p><i class="fas fa-shoe-prints stat-icon"></i><strong>Movimientos:</strong> <span
+                                        id="moveCount">0</span></p>
+                                <p><i class="fas fa-bullseye stat-icon"></i><strong>Mínimo:</strong> <span
+                                        id="minMoves">7</span></p>
                                 <div class="progress-container">
                                     <div class="progress-bar" id="moveProgress"></div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <p><i class="fas fa-stopwatch stat-icon"></i><strong>Tiempo:</strong> <span id="timer">00:00</span></p>
+                                <p><i class="fas fa-stopwatch stat-icon"></i><strong>Tiempo:</strong> <span
+                                        id="timer">00:00</span></p>
                                 <p id="gameStatus" class="text-success"></p>
                             </div>
                         </div>
@@ -621,15 +888,20 @@
                                 <h3 class="h6"><i class="fas fa-book me-2"></i>Reglas:</h3>
                                 <ul class="instr-list">
                                     <li>Solo se puede mover un disco a la vez.</li>
-                                    <li>Cada movimiento consiste en tomar el disco superior de una pila y colocarlo en la parte superior de otra pila.</li>
+                                    <li>Cada movimiento consiste en tomar el disco superior de una pila y colocarlo en
+                                        la parte superior de otra pila.</li>
                                     <li>Ningún disco puede colocarse encima de un disco más pequeño.</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <h3 class="h6"><i class="fas fa-hand-pointer me-2"></i>Cómo jugar:</h3>
-                                <p>Haz clic en la torre de origen y luego en la torre de destino para mover un disco. Intenta completar el puzzle con el mínimo número de movimientos posibles.</p>
-                                <div class="alert alert-info p-2 mt-2" style="background-color: rgba(0, 184, 255, 0.1); border: 1px solid rgba(0, 184, 255, 0.3); border-radius: 10px;">
-                                    <i class="fas fa-lightbulb me-2"></i> <strong>Tip:</strong> El número mínimo de movimientos para resolver el puzzle es 2<sup>n</sup> - 1, donde n es el número de discos.
+                                <p>Haz clic en la torre de origen y luego en la torre de destino para mover un disco.
+                                    Intenta completar el puzzle con el mínimo número de movimientos posibles.</p>
+                                <div class="alert alert-info p-2 mt-2"
+                                    style="background-color: rgba(0, 184, 255, 0.1); border: 1px solid rgba(0, 184, 255, 0.3); border-radius: 10px;">
+                                    <i class="fas fa-lightbulb me-2"></i> <strong>Tip:</strong> El número mínimo de
+                                    movimientos para resolver el puzzle es 2<sup>n</sup> - 1, donde n es el número de
+                                    discos.
                                 </div>
                             </div>
                         </div>
@@ -643,15 +915,18 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="winModalLabel"><i class="fas fa-trophy text-warning me-2"></i>¡Felicitaciones!</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="winModalLabel"><i
+                            class="fas fa-trophy text-warning me-2"></i>¡Felicitaciones!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
                     <div class="mb-4">
                         <i class="fas fa-star text-warning" style="font-size: 3rem;"></i>
                     </div>
                     <h4>¡Has completado el desafío!</h4>
-                    <p>Has resuelto las Torres de Hanoi con <span id="finalMoves">0</span> movimientos en <span id="finalTime">00:00</span>.</p>
+                    <p>Has resuelto las Torres de Hanoi con <span id="finalMoves">0</span> movimientos en <span
+                            id="finalTime">00:00</span>.</p>
                     <p>El mínimo posible era: <span id="finalMinMoves">0</span> movimientos.</p>
                 </div>
                 <div class="modal-footer">
@@ -666,17 +941,24 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="solutionModalLabel"><i class="fas fa-lightbulb text-info me-2"></i>Solución del Juego</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="solutionModalLabel"><i
+                            class="fas fa-lightbulb text-info me-2"></i>Solución del Juego</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Observa la solución paso a paso. Puedes controlar la reproducción:</p>
                     <div class="solution-controls">
-                        <button id="playSolutionBtn" class="btn btn-success"><i class="fas fa-play me-2"></i>Reproducir</button>
-                        <button id="pauseSolutionBtn" class="btn btn-warning"><i class="fas fa-pause me-2"></i>Pausa</button>
-                        <button id="prevStepBtn" class="btn btn-secondary"><i class="fas fa-backward me-2"></i>Anterior</button>
-                        <button id="nextStepBtn" class="btn btn-secondary"><i class="fas fa-forward me-2"></i>Siguiente</button>
-                        <button id="stopSolutionBtn" class="btn btn-danger"><i class="fas fa-stop me-2"></i>Detener</button>
+                        <button id="playSolutionBtn" class="btn btn-success"><i
+                                class="fas fa-play me-2"></i>Reproducir</button>
+                        <button id="pauseSolutionBtn" class="btn btn-warning"><i
+                                class="fas fa-pause me-2"></i>Pausa</button>
+                        <button id="prevStepBtn" class="btn btn-secondary"><i
+                                class="fas fa-backward me-2"></i>Anterior</button>
+                        <button id="nextStepBtn" class="btn btn-secondary"><i
+                                class="fas fa-forward me-2"></i>Siguiente</button>
+                        <button id="stopSolutionBtn" class="btn btn-danger"><i
+                                class="fas fa-stop me-2"></i>Detener</button>
                     </div>
                     <div class="speed-control">
                         <span>Velocidad:</span>
@@ -685,7 +967,29 @@
                     </div>
                     <hr>
                     <ol id="solutionSteps" class="list-group list-group-flush">
-                        </ol>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-outline-info" id="showTreeBtn">Ver árbol de recursión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar el árbol binario de recursión -->
+    <div class="modal fade" id="treeModal" tabindex="-1" aria-labelledby="treeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="treeModalLabel"><i class="fas fa-sitemap text-info me-2"></i>Árbol de
+                        recursión de Hanoi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <pre id="treeText"
+                        style="font-family: 'Consolas', monospace; font-size: 1rem; background: #222; color: #0ff; border-radius: 10px; padding: 20px; overflow-x: auto;"></pre>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
@@ -750,6 +1054,11 @@
         const solutionSpeedSlider = document.getElementById('solutionSpeedSlider');
         const solutionSpeedValueSpan = document.getElementById('solutionSpeedValue');
 
+        // DOM para el árbol
+        const showTreeBtn = document.getElementById('showTreeBtn');
+        const treeText = document.getElementById('treeText');
+        const treeModal = new bootstrap.Modal(document.getElementById('treeModal'));
+
         // Event Listeners
         newGameBtn.addEventListener('click', startNewGame);
         diskCountSelect.addEventListener('change', () => {
@@ -781,6 +1090,13 @@
                 pauseSolution();
                 playSolution();
             }
+        });
+
+        // Evento para mostrar el árbol
+        showTreeBtn.addEventListener('click', () => {
+            const root = buildHanoiTree(numberOfDisks, 0, 2, 1);
+            treeText.textContent = renderTreeText(root);
+            treeModal.show();
         });
 
         // Game Logic Functions
@@ -869,8 +1185,8 @@
                     selectedTower = null;
                     towerContainers.forEach(t => t.classList.remove('selected'));
                 } else {
-                    // Invalid move
-                    alert('¡Movimiento inválido! No puedes colocar un disco grande sobre uno más pequeño.');
+                    // Invalid move: show feedback without alert
+                    showInvalidMoveFeedback();
                     selectedDisk = null; // Deselect to allow a new attempt
                     selectedTower = null;
                     towerContainers.forEach(t => t.classList.remove('selected'));
@@ -977,15 +1293,42 @@
             }, 5000);
         }
 
-        // Solution Logic (Recursive Hanoi)
-        function calculateHanoiSolution(n, source, destination, auxiliary) {
-            if (n === 1) {
-                solutionSteps.push({ disk: 1, from: source, to: destination });
-                return;
+        // Nodo para el árbol binario de movimientos de Hanoi
+        class HanoiNode {
+            constructor(disk, from, to) {
+                this.disk = disk;
+                this.from = from;
+                this.to = to;
+                this.left = null;  // Subproblema izquierdo (n-1 discos)
+                this.right = null; // Subproblema derecho (n-1 discos)
             }
-            calculateHanoiSolution(n - 1, source, auxiliary, destination);
-            solutionSteps.push({ disk: n, from: source, to: destination });
-            calculateHanoiSolution(n - 1, auxiliary, destination, source);
+        }
+
+        // Construye el árbol binario de movimientos
+        function buildHanoiTree(n, source, destination, auxiliary) {
+            if (n === 1) {
+                return new HanoiNode(1, source, destination);
+            }
+            const node = new HanoiNode(n, source, destination);
+            node.left = buildHanoiTree(n - 1, source, auxiliary, destination);
+            node.right = buildHanoiTree(n - 1, auxiliary, destination, source);
+            return node;
+        }
+
+        // Recorre el árbol en inorden para obtener los pasos
+        function traverseHanoiTree(node, steps = []) {
+            if (!node) return steps;
+            traverseHanoiTree(node.left, steps);
+            steps.push({ disk: node.disk, from: node.from, to: node.to });
+            traverseHanoiTree(node.right, steps);
+            return steps;
+        }
+
+        // Nueva función para calcular la solución usando árbol binario
+        function calculateHanoiSolution(n, source, destination, auxiliary) {
+            solutionSteps = [];
+            const root = buildHanoiTree(n, source, destination, auxiliary);
+            solutionSteps = traverseHanoiTree(root, []);
         }
 
         function showSolution() {
@@ -1100,9 +1443,42 @@
             }
         }
 
+        // Feedback visual para movimiento inválido
+        function showInvalidMoveFeedback() {
+            gameStatusSpan.textContent = '¡Movimiento inválido!';
+            gameStatusSpan.classList.add('text-danger');
+            setTimeout(() => {
+                if (gameStatusSpan.textContent === '¡Movimiento inválido!') {
+                    gameStatusSpan.textContent = '';
+                    gameStatusSpan.classList.remove('text-danger');
+                }
+            }, 1200);
+        }
+
+        // Función para renderizar el árbol binario en texto
+        function renderTreeText(node, prefix = '', isLeft = true) {
+            if (!node) return '';
+            let str = '';
+            str += prefix;
+            str += isLeft ? '├── ' : '└── ';
+            str += `Disco ${node.disk}: ${String.fromCharCode(65 + node.from)} → ${String.fromCharCode(65 + node.to)}\n`;
+            const hasLeft = !!node.left;
+            const hasRight = !!node.right;
+            if (hasLeft || hasRight) {
+                if (hasLeft) {
+                    str += renderTreeText(node.left, prefix + (isLeft ? '│   ' : '    '), true);
+                }
+                if (hasRight) {
+                    str += renderTreeText(node.right, prefix + (isLeft ? '│   ' : '    '), false);
+                }
+            }
+            return str;
+        }
+
         // Initialize game on load
         startNewGame();
         solutionSpeedValueSpan.textContent = `${(solutionSpeed / 1000).toFixed(1)}s`; // Initial speed display
     </script>
 </body>
+
 </html>
